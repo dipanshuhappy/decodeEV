@@ -29,13 +29,19 @@ class LoginView(generics.GenericAPIView):
             # authenticate()
             if user is None:
                 return Response({"detail":"user not found"}, status=status.HTTP_400_BAD_REQUEST)
-       
+            vehicle_id=Vehicle.objects.get(user_id=user.id)
+            print(vehicle_id)
             return Response({
                 "email":user.get_email_field_name(),
                 "first_name":user.first_name,
-                "last_name":user.last_name
+                "last_name":user.last_name,
+                "vehicle_id":vehicle_id.id
             },status=status.HTTP_200_OK)
+
 class GetVehicle(generics.RetrieveAPIView):
     queryset=Vehicle.objects.all()
     serializer_class=VehicleSerializer
-    lookup_field = 'user_id'
+    lookup_field = 'pk'
+    lookup_url_kwarg = 'pk'
+   
+

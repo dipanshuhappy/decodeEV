@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/login',LoginView.as_view()),
     path('auth/register',RegisterView.as_view()),
-    path('vehicle/<str:user_id>',GetVehicle.as_view())
+    path('vehicle/<int:pk>',GetVehicle.as_view()),
 ]

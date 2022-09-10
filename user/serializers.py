@@ -1,7 +1,8 @@
+from dataclasses import field
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from user.models import Vehicle
+from user.models import Battery, Vehicle
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -30,18 +31,19 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['email', 'password']
+class BatterySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Battery
+        fields=['battery_name','charge_cycles']
 class VehicleSerializer(serializers.ModelSerializer):
-     class Meta:
+
+    battery_id=BatterySerializer(required=True)
+    class Meta:
         model=Vehicle
         fields=[
             'id',
-            'bennett_email',
-            'first_name',
-            'last_name',
-            'enrollment_number',
-            'school_code',
-            'department_code',
-            'batch',
-            'program',
-            'current_semester'
+            'vehicle_type',
+            'number_plate',
+            'battery_id',
+            'user_id'
         ]
