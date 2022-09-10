@@ -3,10 +3,10 @@ from django.db import models
 from user.models import Battery, Vehicle
 
 class ChargingStation(models.Model):
-    location = models.CharField(max_length=255)
-    latitude = models.DecimalField(decimal_places=6,max_digits=8)
-    longitude = models.DecimalField(decimal_places=6,max_digits=8)
-    city = models.CharField(max_length=200)
+    location = models.CharField(max_length=255,default="")
+    latitude = models.DecimalField(decimal_places=6,max_digits=8,default=0)
+    longitude = models.DecimalField(decimal_places=6,max_digits=8,default=0)
+    city = models.CharField(max_length=200,default="")
     number_of_slots = models.PositiveIntegerField(default=0)
 
 class ChargingSlot(models.Model):
