@@ -43,5 +43,6 @@ class GetVehicle(generics.RetrieveAPIView):
     serializer_class=VehicleSerializer
     lookup_field = 'pk'
     lookup_url_kwarg = 'pk'
-   
-
+class MakeVehicle(generics.CreateAPIView):
+    queryset=Vehicle.objects.all()
+    serializer_class=VehicleSerializer
