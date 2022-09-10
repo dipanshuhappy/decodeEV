@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
+from user.models import Vehicle
+
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
@@ -28,3 +30,18 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['email', 'password']
+class VehicleSerializer(serializers.ModelSerializer):
+     class Meta:
+        model=Vehicle
+        fields=[
+            'id',
+            'bennett_email',
+            'first_name',
+            'last_name',
+            'enrollment_number',
+            'school_code',
+            'department_code',
+            'batch',
+            'program',
+            'current_semester'
+        ]

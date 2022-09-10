@@ -7,9 +7,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from user.models import Vehicle
 
 
-from user.serializers import LoginSerializer, UserSerializer
+from user.serializers import LoginSerializer, UserSerializer, VehicleSerializer
 class RegisterView(generics.GenericAPIView):
     serializer_class = UserSerializer
     def post(self, request):
@@ -34,3 +35,7 @@ class LoginView(generics.GenericAPIView):
                 "first_name":user.first_name,
                 "last_name":user.last_name
             },status=status.HTTP_200_OK)
+class GetVehicle(generics.RetrieveAPIView):
+    queryset=Vehicle.objects.all()
+    serializer_class=VehicleSerializer
+    lookup_field = 'user_id'

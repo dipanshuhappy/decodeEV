@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from user.views import LoginView, RegisterView
+from user.views import LoginView, RegisterView,GetVehicle
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/login',LoginView.as_view()),
-    path('auth/register',RegisterView.as_view())
+    path('auth/register',RegisterView.as_view()),
+    path('vehicle/<str:user_id>',GetVehicle.as_view())
 ]
