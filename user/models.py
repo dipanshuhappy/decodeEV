@@ -16,7 +16,7 @@ from django.db import models
 #         user.save(using=self._db)
 #         return user
 class Battery(models.Model):
-    batter_name=models.CharField(primary_key=True,max_length=255)
+    battery_name=models.CharField(primary_key=True,max_length=255)
     charge_cycles=models.PositiveBigIntegerField(null=True,blank=True)
 
 class Vehicle(models.Model):

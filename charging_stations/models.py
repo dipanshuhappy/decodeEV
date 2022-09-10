@@ -6,7 +6,9 @@ class ChargingStation(models.Model):
     location = models.CharField(max_length=255)
     latitude = models.DecimalField(decimal_places=6,max_digits=8)
     longitude = models.DecimalField(decimal_places=6,max_digits=8)
+    city = models.CharField(max_length=200)
     number_of_slots = models.PositiveIntegerField(default=0)
+
 class ChargingSlot(models.Model):
     battery_name=models.OneToOneField(to=Battery,on_delete=models.CASCADE)
     is_active  = models.BooleanField()
