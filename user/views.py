@@ -36,7 +36,12 @@ class LoginView(generics.GenericAPIView):
                 "first_name":user.first_name,
                 "last_name":user.last_name,
                 "vehicle_id":vehicle_id.id
-            },status=status.HTTP_200_OK)
+            },status=status.HTTP_200_OK,headers={
+                "Access-Control-Allow-Origin":"*",
+                "Access-Control-Allow-Methods" : "POST, OPTIONS",
+                "Access-Control-Max-Age":"1000",
+                "Access-Control-Allow-Headers":"X-Requested-With, Content-Type"
+            })
 
 class GetVehicle(generics.RetrieveAPIView):
     queryset=Vehicle.objects.all()
