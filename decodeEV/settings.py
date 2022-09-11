@@ -26,13 +26,10 @@ SECRET_KEY = 'django-insecure-z)1(r=((9o0zk=qic!qco$(-4_xt3nn^ccj7bf-u8a*6f#&+)#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# CORS_ORIGIN_ALLOW_ALL = True
 
 ALLOWED_HOSTS = ['decode-ev.herokuapp.com','127.0.0.1','localhost']
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-# ]
+
 
 
 # Application definition
@@ -45,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'corsheaders',
+    'corsheaders',
     'user',
     'charging_stations'
 ]
@@ -54,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -133,6 +131,11 @@ USE_I18N = True
 
 USE_TZ = True
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
