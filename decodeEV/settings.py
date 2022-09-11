@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['decode-ev.herokuapp.com','127.0.0.1']
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 

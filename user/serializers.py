@@ -44,6 +44,6 @@ class VehicleSerializer(serializers.ModelSerializer):
             'id',
             'vehicle_type',
             'number_plate',
-            'battery_id',
+            'battery_id', 
             'user_id'
         ]
