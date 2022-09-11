@@ -37,6 +37,7 @@ class LoginView(generics.GenericAPIView):
                 "last_name":user.last_name,
                 "vehicle_id":vehicle_id.id
             },status=status.HTTP_200_OK)
+        return Response({},status=500)
 
 class GetVehicle(generics.RetrieveAPIView):
     queryset=Vehicle.objects.all()
